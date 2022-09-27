@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>새해첫곡</title>
+</head>
+<style type="text/css">
+	@font-face {
+    font-family: 'OKCHAN';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/OKCHAN.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Hahmlet-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/Hahmlet-Bold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+	body{
+		background: black; 		
+		margin: 0 auto;
+	}
+	.money{
+		position: absolute;
+		left: 0; top: 0;
+		opacity: 0.7;
+
+	}
+	a{	
+		font-family: 'OKCHAN';
+		text-decoration: none;
+		color: white;
+		margin: 0;
+		position: absolute;
+		left: 40%; top: 100px;
+		font-size: 72pt;
+		animation: fadein 1s forwards;
+		opacity: 0;
+	}
+	@keyframes fadein{
+		to{opacity: 1;}
+	}
+
+	.money-youtube{
+		margin: 0;
+		position: absolute;
+		left: 28%; top: 300px;
+		position: sticky;
+		z-index: 7;
+
+	}
+
+	#poetText{
+			z-index: 5; position: absolute;
+			left: 30%; top: 300px; font-size: 2rem;
+			color: white;
+		}
+		.word{opacity: 0; 
+			animation: fadein 1.5s forwards;
+			font-family: 'Hahmlet-Bold';
+		}
+
+	.box{
+		position: absolute;
+		left: 100px; top: 100px;
+		width: 50px;
+		height: 50px;
+
+	}
+
+	p{
+		font-family: 'OKCHAN';
+		color: white;
+		font-size: 14pt;
+		margin: 0;
+		position: absolute;
+		text-align: center;
+		left: 44%; top: 247px;
+
+	}
+
+</style>
+<body>
+
+	<a>새해첫곡</a>
+	<p>아이콘을 눌러서 소원을 비세요</p>
+	<div id="poetText"></div>
+	<iframe class="money-youtube" width="800" height="515" src="https://www.youtube.com/embed/dNCWe_6HAM8?start=47" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+	<script type="text/javascript">
+		var a = ["money1","money2","money3"]
+
+		for(var i=0; i<50; i++){
+			var t = document.createElement("img");
+			t.src = a[randomBH(0,2)] + ".png";
+			t.classname = "money";
+			t.style.width = randomBH(50,300) + "px";
+			t.style.height = "auto";
+			t.style.left = Math.random()*screen.availWidth + "px";
+			t.style.top = Math.random()*screen.availHeight + "px";
+			document.body.appendChild(t);
+			console.log(t);
+		}
+
+		var poet = "I came here to drop some money,<br> dropping all my money<br> Drop some money,<br> all this bread so yummy,<br> Twerking, twerking when I buy the things I like<br> Dollar, dollars dropping on my ass tonight<br> Everyone silent, listen to my money talk<br> Spend how I like it<br> Yeah, everyone know what I mean, mean<br> When they see green,<br> when they see green,<br> that mean go<br> Give me what the hell I want<br> Give me what the hell I want"
+		var poetArr = poet.split(" ");
+
+		var myTimer = setInterval(print, 500);
+		 var s=0; 
+		 function print(){
+		 	var t = document.createElement("span");
+		 	t.innerHTML = poetArr[s] + " ";
+		 	t.className = "word";
+		 	poetText.appendChild(t);
+		 	s++;
+		 	if(s == poetArr.length){
+		 		clearInterval(myTimer);
+		 	}
+		 }
+
+	makeBox();
+	let mark = 0;
+	function makeBox() {
+		var a = document.createElement("img");
+		a.id = "square";
+		a.className = "box";
+		a.src = "money4.png";
+
+		a.style.left = 49 + "%";
+		a.style.top = 100 + "px";
+		
+		 a.onclick = function(){
+
+			alert("$ 23년 내 통장 떡상 가자 $");
+			a.parentNode.removeChild(a);
+			makeBox();
+		}
+		document.body.appendChild(a);
+
+	}
+
+
+		function randomBH(min, max) {
+  			min = Math.ceil(min);
+  			max = Math.floor(max);
+  			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+
+		</script>
+</body>
+</html>
